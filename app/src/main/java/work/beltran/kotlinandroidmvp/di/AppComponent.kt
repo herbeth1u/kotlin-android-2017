@@ -3,7 +3,9 @@ package work.beltran.kotlinandroidmvp.di
 import dagger.Component
 import work.beltran.kotlinandroidmvp.MainActivity
 
-@Component
+@Component(
+        modules = arrayOf(GithubServiceModule::class)
+)
 interface AppComponent {
-    fun  inject(mainActivity: MainActivity)
+    fun inject(mainActivity: MainActivity)
 }

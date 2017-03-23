@@ -9,7 +9,7 @@ interface Schedulers {
     fun ui() : Scheduler
 }
 
-class AndroidSchedulers @Inject constructor(): Schedulers {
+object AndroidSchedulers : Schedulers {
     override fun io(): Scheduler = io.reactivex.schedulers.Schedulers.io()
     override fun ui(): Scheduler = AndroidSchedulers.mainThread()
 }
