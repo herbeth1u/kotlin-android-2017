@@ -14,12 +14,14 @@ import org.mockito.junit.MockitoJUnitRunner
 import work.beltran.kotlinandroidmvp.api.GithubService
 import work.beltran.kotlinandroidmvp.api.Repo
 import work.beltran.kotlinandroidmvp.rx.Schedulers
+import work.beltran.kotlinandroidmvp.ui.MainPresenter
+import work.beltran.kotlinandroidmvp.ui.MainView
 
 @RunWith(MockitoJUnitRunner::class)
 class MainPresenterTest {
 
     @Mock
-    lateinit var service: GithubService
+    lateinit var service: work.beltran.kotlinandroidmvp.api.GithubService
 
     lateinit var presenter: MainPresenter
 
@@ -32,7 +34,7 @@ class MainPresenterTest {
     @Test
     fun load_list_of_repos_and_hide_errors_When_attached_to_view() {
         val view = mock(MainView::class.java)
-        val list = emptyList<Repo>()
+        val list = emptyList<work.beltran.kotlinandroidmvp.api.Repo>()
         `when`(service.listRepos("miquelbeltran")).thenReturn(Single.just(list))
         presenter.attachView(view)
         verify(view).hideError()

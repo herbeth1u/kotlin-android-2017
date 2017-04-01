@@ -13,15 +13,8 @@ import work.beltran.kotlinandroidmvp.rx.Schedulers
 class GithubServiceModule {
 
     @Provides
-    fun retrofit() = Retrofit.Builder()
-            .baseUrl("https://api.github.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
+    fun retrofit() = work.beltran.kotlinandroidmvp.api.retrofit()
 
     @Provides
-    fun githubService(retrofit: Retrofit) = retrofit.create(GithubService::class.java)
-
-    @Provides
-    fun schedulers() : Schedulers = AndroidSchedulers
+    fun githubService(retrofit: Retrofit) = work.beltran.kotlinandroidmvp.api.githubService(retrofit)
 }

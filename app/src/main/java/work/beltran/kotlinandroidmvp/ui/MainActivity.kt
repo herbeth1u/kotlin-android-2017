@@ -1,8 +1,10 @@
-package work.beltran.kotlinandroidmvp
+package work.beltran.kotlinandroidmvp.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import io.reactivex.disposables.CompositeDisposable
+import work.beltran.kotlinandroidmvp.App
+import work.beltran.kotlinandroidmvp.R
 import work.beltran.kotlinandroidmvp.api.GithubService
 import work.beltran.kotlinandroidmvp.api.Repo
 import work.beltran.kotlinandroidmvp.rx.Schedulers
