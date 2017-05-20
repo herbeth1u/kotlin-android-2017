@@ -21,21 +21,21 @@ import work.beltran.kotlinandroidmvp.ui.MainView
 class MainPresenterTest {
 
     @Mock
-    lateinit var service: work.beltran.kotlinandroidmvp.api.GithubService
+    lateinit var interactor: GithubInteractor
 
     lateinit var presenter: MainPresenter
 
 
     @Before
     fun setUp() {
-        presenter = MainPresenter(service, TestSchedulers)
+        presenter = MainPresenter(interactor, TestSchedulers)
     }
 
     @Test
     fun load_list_of_repos_and_hide_errors_When_attached_to_view() {
         val view = mock(MainView::class.java)
         val list = emptyList<work.beltran.kotlinandroidmvp.api.Repo>()
-        `when`(service.listRepos("miquelbeltran")).thenReturn(Single.just(list))
+        `when`(interactor.reposFor("miquelbeltran")).thenReturn(Single.just(list))
         presenter.attachView(view)
         verify(view).hideError()
         verify(view).showList(list)
@@ -44,7 +44,7 @@ class MainPresenterTest {
     @Test
     fun show_error_message_When_attached_to_view_and_got_error() {
         val view = mock(MainView::class.java)
-        `when`(service.listRepos("miquelbeltran")).thenReturn(Single.error(Throwable("Error")))
+        `when`(interactor.reposFor("miquelbeltran")).thenReturn(Single.error(Throwable("Error")))
         presenter.attachView(view)
         verify(view).showError("Error")
     }
