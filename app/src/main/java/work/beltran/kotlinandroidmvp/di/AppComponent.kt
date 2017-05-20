@@ -7,8 +7,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(
         modules = arrayOf(
-                GithubInteractorModule::class,
-                RxModule::class
+                ReposViewModelModule::class
         )
 )
 interface AppComponent {

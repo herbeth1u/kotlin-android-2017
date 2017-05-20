@@ -2,50 +2,55 @@ package work.beltran.kotlinandroidmvp.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import io.reactivex.disposables.CompositeDisposable
 import work.beltran.kotlinandroidmvp.App
 import work.beltran.kotlinandroidmvp.R
 import work.beltran.kotlinandroidmvp.api.Repo
+import work.beltran.kotlinandroidmvp.di.DaggerAppComponent
+import work.beltran.kotlinandroidmvp.di.ReposViewModelModule
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainView {
     @Inject
-    lateinit var presenter: MainPresenter
+    lateinit var viewModel: ReposViewModel
+    private val composite = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        (application as App).appComponent.inject(this)
+        DaggerAppComponent.builder()
+                .reposViewModelModule(ReposViewModelModule("miquelbeltran"))
+                .build()
+                .inject(this)
     }
 
     override fun onStart() {
         super.onStart()
-        presenter.attachView(this)
+        viewModel.repos.subscribe(this::showList, { showError(it.localizedMessage) })
     }
 
     override fun onResume() {
         super.onResume()
-        presenter.loadRepos()
     }
 
     override fun onStop() {
-        presenter.detachView()
+        composite.clear()
         super.onStop()
     }
 
-    override fun showError(localizedMessage: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showError(localizedMessage: String) {
+        Log.e("MainActivity", localizedMessage)
     }
 
     override fun showList(it: List<Repo>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.d("MainActivity", it.toString())
     }
 
     override fun showLoading(b: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun hideError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 
