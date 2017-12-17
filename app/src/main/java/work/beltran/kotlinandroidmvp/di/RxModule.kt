@@ -9,7 +9,6 @@ import javax.inject.Singleton
 
 @Module
 class RxModule {
-
     @Provides
     @Singleton
     fun schedulers(): Schedulers = SchedulersApp
