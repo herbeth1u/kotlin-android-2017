@@ -1,4 +1,4 @@
-package work.beltran.kotlinandroidmvp.api
+package work.beltran.kotlinandroidmvp.model
 
 data class Repo(val name: String,
                 val description: String,

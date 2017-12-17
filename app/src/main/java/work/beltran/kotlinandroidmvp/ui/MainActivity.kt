@@ -8,7 +8,7 @@ import android.view.View.VISIBLE
 import kotlinx.android.synthetic.main.activity_main.*
 import work.beltran.kotlinandroidmvp.App
 import work.beltran.kotlinandroidmvp.R
-import work.beltran.kotlinandroidmvp.api.Repo
+import work.beltran.kotlinandroidmvp.model.Repo
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainView {

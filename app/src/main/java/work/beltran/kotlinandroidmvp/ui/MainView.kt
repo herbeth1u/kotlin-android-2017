@@ -1,6 +1,6 @@
 package work.beltran.kotlinandroidmvp.ui
 
-import work.beltran.kotlinandroidmvp.api.Repo
+import work.beltran.kotlinandroidmvp.model.Repo
 
 interface MainView {
     fun showError(localizedMessage: String?)

@@ -2,7 +2,7 @@ package work.beltran.kotlinandroidmvp.ui
 
 import io.reactivex.disposables.CompositeDisposable
 import work.beltran.kotlinandroidmvp.api.GithubService
-import work.beltran.kotlinandroidmvp.api.Repo
+import work.beltran.kotlinandroidmvp.model.Repo
 import work.beltran.kotlinandroidmvp.di.Schedulers
 import javax.inject.Inject
 
