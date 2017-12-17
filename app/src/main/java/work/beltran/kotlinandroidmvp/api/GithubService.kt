@@ -8,4 +8,3 @@ interface GithubService {
     @GET("users/{user}/repos")
     fun listRepos(@Path("user") user: String): Single<List<Repo>>
 }
-

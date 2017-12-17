@@ -9,7 +9,7 @@ import work.beltran.kotlinandroidmvp.api.GithubService
 import javax.inject.Singleton
 
 @Module
-class GithubServiceModule {
+class GithubModule {
     @Provides
     @Singleton
     fun retrofit(): Retrofit = Retrofit.Builder()

@@ -5,7 +5,7 @@ import work.beltran.kotlinandroidmvp.ui.MainActivity
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [(GithubInteractorModule::class), (RxModule::class)])
+@Component(modules = [GithubModule::class, RxModule::class])
 interface AppComponent {
     fun inject(mainActivity: MainActivity)
 }
