@@ -6,7 +6,7 @@ import work.beltran.kotlinandroidmvp.GithubInteractor
 import work.beltran.kotlinandroidmvp.github.GithubInteractorImpl
 import javax.inject.Singleton
 
-@Module(includes = arrayOf(GithubServiceModule::class, RxModule::class))
+@Module(includes = [(GithubServiceModule::class), (RxModule::class)])
 class GithubInteractorModule {
     @Provides
     @Singleton
