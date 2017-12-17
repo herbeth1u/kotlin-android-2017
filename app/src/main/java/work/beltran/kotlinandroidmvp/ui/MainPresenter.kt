@@ -2,7 +2,6 @@ package work.beltran.kotlinandroidmvp.ui
 
 import io.reactivex.disposables.CompositeDisposable
 import work.beltran.kotlinandroidmvp.GithubInteractor
-import work.beltran.kotlinandroidmvp.api.GithubService
 import work.beltran.kotlinandroidmvp.api.Repo
 import work.beltran.kotlinandroidmvp.rx.Schedulers
 import javax.inject.Inject
@@ -17,12 +16,14 @@ class MainPresenter @Inject constructor(val interactor: GithubInteractor,
     }
 
     fun loadRepos() {
-        composite.add(
-                interactor.reposFor("miquelbeltran")
-                        .observeOn(schedulers.ui())
-                        .doOnSubscribe { view?.showLoading(true) }
-                        .doOnDispose { view?.showLoading(false) }
-                        .subscribe(this::onNext, this::onError))
+        composite.add(interactor.reposFor("herbeth1u")
+                .subscribeOn(schedulers.io())
+                .observeOn(schedulers.ui())
+                .doOnSubscribe { view?.showLoading(true) }
+                .doOnDispose { view?.showLoading(false) }
+                .doOnSuccess { view?.showLoading(false) }
+                .doOnError { view?.showLoading(false) }
+                .subscribe(this::onNext, this::onError))
     }
 
     private fun onNext(list: List<Repo>) {

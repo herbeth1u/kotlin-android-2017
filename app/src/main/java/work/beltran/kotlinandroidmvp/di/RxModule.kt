@@ -12,7 +12,7 @@ class RxModule {
 
     @Provides
     @Singleton
-    fun schedulers() : Schedulers = SchedulersApp
+    fun schedulers(): Schedulers = SchedulersApp
 }
 
 object SchedulersApp : Schedulers {

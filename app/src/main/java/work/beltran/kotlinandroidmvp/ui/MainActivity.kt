@@ -2,6 +2,10 @@ package work.beltran.kotlinandroidmvp.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import kotlinx.android.synthetic.main.activity_main.*
 import work.beltran.kotlinandroidmvp.App
 import work.beltran.kotlinandroidmvp.R
 import work.beltran.kotlinandroidmvp.api.Repo
@@ -33,19 +37,20 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun showError(localizedMessage: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        textError.text = localizedMessage
+        textError.visibility = VISIBLE
     }
 
     override fun showList(it: List<Repo>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.e("D", it.toString())
     }
 
-    override fun showLoading(b: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showLoading(show: Boolean) {
+        progressBar.visibility = if (show) VISIBLE else GONE
     }
 
     override fun hideError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        textError.visibility = GONE
     }
 }
 
